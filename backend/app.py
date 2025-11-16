@@ -11,11 +11,17 @@ app = FastAPI(
     version="1.0.0",
     description="API для розрахунку характеристик БПЛА (ГМГ, тяга, потужність, час польоту)",
 )
+origins = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://localhost",
+    "*",   # ← тимчасово, поки розробка (можемо забрати)
+]
 
 # CORS, щоб фронтенд міг стукатися з браузера
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # на проді краще обмежити доменом фронтенду
+    allow_origins=origins,   # на проді краще обмежити доменом фронтенду
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
