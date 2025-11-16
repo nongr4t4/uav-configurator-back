@@ -37,7 +37,7 @@ document.getElementById("uavForm").addEventListener("submit", async function (e)
     console.log("SEND:", payload);
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/configure", {
+        const response = await fetch("https://uav-arc-backend.onrender.com/configure", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
